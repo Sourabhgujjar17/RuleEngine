@@ -1,0 +1,110 @@
+# Rule Engine Application
+
+## Overview
+
+This Rule Engine application determines user eligibility based on conditional rules defined through an Abstract Syntax Tree (AST). It allows for dynamic creation, combination, and evaluation of rules based on user attributes such as age, department, salary, and experience.
+
+## Prerequisites
+
+- Python
+- Flask
+- PSQL
+
+## Installation
+
+1. **Clone the Repository:**
+   bash
+   git clone https://github.com/yourusername/RuleEngineProject.git
+   cd RuleEngineProject
+
+## Creation of Virtual Environment:
+
+python -m venv venv
+
+## Activation of Virtual Environment:
+
+venv\Scripts\activate
+
+## Install Dependencies:
+
+pip install -r requirements.txt
+
+## The application will be running at http://127.0.0.1:5000.
+
+## API Endpoints
+
+Create Rule
+URL: /create_rule
+
+Method: POST
+
+Description: This endpoint allows the user to create a new rule. The rule is processed and stored as an Abstract Syntax Tree (AST).
+
+## Request Body:
+
+json
+{
+  "rule": "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
+}
+
+## Response:
+
+json
+{
+  "message": "Rule processed successfully",
+  "rule": "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
+}
+
+## Evaluate Rule
+URL: /evaluate_rule
+
+Method: POST
+
+Description: This endpoint allows the user to evaluate a specific rule against user data to determine eligibility.
+
+Request Body:
+
+json
+{
+  "data": {
+    "age": 35,
+    "department": "Sales",
+    "salary": 60000,
+    "experience": 3
+  },
+  "rule_id": 1
+}
+Response:
+
+json
+{
+  "is_eligible": true
+}
+
+## Data Structure
+The application utilizes an Abstract Syntax Tree (AST) to represent rules, defined by the following structure:
+
+Node: Represents each part of the rule.
+type: String indicating the node type ("operator" for AND/OR, "operand" for conditions).
+left: Reference to another Node (left child).
+right: Reference to another Node (right child for operators).
+value: Optional value for operand nodes (e.g., number for comparisons).
+
+## Non-Functional Items
+Security: Implemented input validation to prevent SQL injection and ensure data integrity.
+Performance: Optimized rule evaluation to minimize redundant checks and improve response times.
+
+## Conclusion
+This application serves as a dynamic rule engine for evaluating user eligibility based on customizable rules. You can extend its functionality to support user-defined functions and more complex conditions.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+# Contact
+For questions or feedback, please contact Your Name.
+
+### Key Points to Adjust:
+- **GitHub**: Sourabhgujjar17
+- **Contact Information**:
+Name-Sourabh  
+Email-sourabhchandela18@gmail.com
